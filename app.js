@@ -86,7 +86,7 @@ app.get('/sobre', (req, res) => {
 app.use('/user', usuarios);
 
 // OUTROS
-const PORTA = process.env.PORTA || 8081
+const PORTA = process.env.PORT || 8081
 app.listen(PORTA, ()=>{
     console.log("Servidor rodando!");
 })
