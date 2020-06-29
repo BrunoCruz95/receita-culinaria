@@ -1,0 +1,39 @@
+{{>_navbar_registro}}
+
+<div class="titulo-superior">Registro</div>
+
+{{#each erros}}
+<div class="alert alert-danger mensagens">
+    {{texto}}
+</div>
+{{else}}
+
+{{/each}}
+<div id="area-informacao">
+    <div class="fundo-secundario">
+        <div>
+            <form action="/user/registro/novo" method="POST">
+
+                <label for="nome">Nome: </label>
+                <div class="form-group">
+                    <input type="text" name="nome" class="form-input" placeholder="Nome de usuário">
+                </div>
+
+                <label for="senha">Senha: </label>
+                <div class="form-group">
+                    <input type="password" name="senha" class="form-input" placeholder="Digite sua senha">
+                </div>
+
+                <label for="senha2">Confirmar senha: </label>
+                <div class="form-group">
+                    <input type="password" name="senha2" class="form-input" placeholder="Repita sua senha">
+                </div>
+
+                <center>
+                    <button type="submit" id='area-botao-salvar' id='botao-salvar'>Criar conta</button>
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>

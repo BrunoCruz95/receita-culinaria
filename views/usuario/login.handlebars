@@ -1,0 +1,34 @@
+{{>_navbar_login}}
+
+<div class="titulo-superior">Login</div>
+
+{{#if error}}
+<div class="alert alert-danger mensagens">
+    {{error}}
+</div>
+{{else}}
+{{/if}}
+
+<div id="area-informacao">
+    <div class="fundo-secundario">
+        <div>
+            <form action="/user/login" method="POST">
+
+                <label for="nome">Nome: </label>
+                <div class="form-group">
+                    <input type="text" name="nome" class="form-input" placeholder="Nome de usuário">
+                </div>
+
+                <label for="senha">Senha: </label>
+                <div class="form-group">
+                    <input type="password" name="senha" class="form-input" placeholder="Digite sua senha">
+                </div>
+
+                <center>
+                    <button type="submit" id='area-botao-salvar' id='botao-salvar'>Entrar</button>
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>

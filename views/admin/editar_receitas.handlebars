@@ -1,0 +1,88 @@
+<!--
+{{>_navbar_adiciona}}
+
+<div class="titulo-superior">Editar receita</div>
+
+{{#each erros}}
+<div class="alert alert-danger mensagens">
+    {{texto}}
+</div>
+{{else}}
+
+{{/each}}
+<div id="area-informacao">
+    <div class="fundo-secundario">
+        <div>
+            <form action="/admin/receitas/editar" method="POST">
+                <input type="hidden" name="id" value="{{receita._id}}">
+                <label>Nome: </label>
+                <div class="form-group">
+                    <input type="text" class="form-input" name="tituloReceita" placeholder="Nome da Receita"
+                        value="{{receita.titulo}}">
+                </div>
+
+                <label>Autor: </label>
+                <div class="form-group">
+                    <input type="text" class="form-input" name="autorReceita" placeholder="Nome do Autor"
+                        value="{{receita.autor}}">
+                </div>
+
+                <label>Descrição: </label>
+                <div class="form-group">
+                    <textarea name="assuntoReceita" class="form-input-assunto" cols="40" rows="10"
+                        placeholder="Sobre a receita">{{receita.assunto}}</textarea>
+                </div>
+
+                <label>Máterias necessarios: </label>
+                <div class="form-group">
+                    <input type="text" class="form-input" name="material1Receita" placeholder="1º máterial"
+                        value="{{receita.material1}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" name="material2Receita" placeholder="2º máterial"
+                        value="{{receita.material2}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" name="material3Receita" placeholder="3º máterial"
+                        value="{{receita.material3}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" name="material4Receita" placeholder="4º máterial"
+                        value="{{receita.material4}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" name="material5Receita" placeholder="5º máterial"
+                        value="{{receita.material5}}">
+                </div>
+
+                <label>Passo a passo: </label>
+                <div class="form-group">
+                    <input type="text" class="form-input" name="passo1Receita" placeholder="1º passo"
+                        value="{{receita.passo1}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" name="passo2Receita" placeholder="2º passo"
+                        value="{{receita.passo2}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" name="passo3Receita" placeholder="3º passo"
+                        value="{{receita.passo3}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" name="passo4Receita" placeholder="4º passo"
+                        value="{{receita.passo4}}">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" name="passo5Receita" placeholder="5º passo"
+                        value="{{receita.passo5}}">
+                </div>
+
+                <center>
+                    <button type="submit" id='area-botao-salvar' id='botao-salvar'>Salvar Edição</button>
+                </center>
+
+            </form>
+        </div>
+    </div>
+</div>
+-->

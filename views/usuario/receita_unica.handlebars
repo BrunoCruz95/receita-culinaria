@@ -1,0 +1,56 @@
+{{>_navbar_receita}}
+
+<div class="titulo-superior">Todas as receita você encontra aqui</div>
+
+<div id="area-informacao">
+    <div class="fundo-secundario">
+
+        <div class="titulo">{{receita.titulo}}</div>
+
+        <div id="area-dados">
+            <span>{{receita.autor}}&nbsp;~</span>
+            <span>{{formatDate receita.date}}</span>
+        </div>
+
+        <div class="tamanho-texto">Descrição</div>
+        <div>{{receita.assunto}}</div>
+
+        <div class="tamanho-texto">Matérias</div>
+        <div class="area-material">
+            {{#if receita.material1}}
+            <div>- {{receita.material1}}</div>
+            {{/if}}
+            {{#if receita.material2}}
+            <div>- {{receita.material2}}</div>
+            {{/if}}
+            {{#if receita.material3}}
+            <div>- {{receita.material3}}</div>
+            {{/if}}
+            {{#if receita.material4}}
+            <div>- {{receita.material4}}</div>
+            {{/if}}
+            {{#if receita.material5}}
+            <div>- {{receita.material5}}</div>
+            {{/if}}
+        </div>
+
+        <div class="tamanho-texto">Passo a Passo</div>
+        <div class="area-passo">
+            {{#if receita.passo1}}
+            <div>1 - {{receita.passo1}}</div>
+            {{/if}}
+            {{#if receita.passo2}}
+            <div>2 - {{receita.passo2}}</div>
+            {{/if}}
+            {{#if receita.passo3}}
+            <div>3 - {{receita.passo3}}</div>
+            {{/if}}
+            {{#if receita.passo4}}
+            <div>4 - {{receita.passo4}}</div>
+            {{/if}}
+            {{#if receita.passo5}}
+            <div>5 - {{receita.passo5}}</div>
+            {{/if}}
+        </div>
+    </div>
+</div>
