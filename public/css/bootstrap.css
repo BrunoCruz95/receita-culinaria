@@ -303,7 +303,7 @@ a:hover{
 }
 .area-nome{
   color: #4e4e4e;
-  font-size: 70px;
+  font-size: 50px;
   font-family: Brush Script MT, Brush Script Std, cursive;
 }
 .fundo-secundario{
@@ -316,7 +316,7 @@ a:hover{
 }
 .fundo-principal{
   background-image: url('../img/fundo.jpg');
-  background-size: 400px;
+  background-size: 100px;
 }
 .titulo-superior{
   text-align: center;
