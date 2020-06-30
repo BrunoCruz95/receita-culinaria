@@ -1,2 +1,2 @@
-# receita-culinaria
-🥞 Sistema de Receitas
+# Sistema de Receitas
+🥞 Receitas
