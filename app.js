@@ -60,7 +60,7 @@ app.set('view engine', 'handlebars');
 
 //MONGOOSE
 mongoose.Promise = global.Promise;
-mongoose.connect(db.mongoURI).then(() => {
+mongoose.connect("mongodb+srv://receitas-tudo:<brunobenson>@cluster0.odaru.mongodb.net/<receitastudo>?retryWrites=true&w=majority").then(() => {
     console.log("Conectado ao mongo");
 }).catch((erro) => {
     console.log("Erro ao se conectar "+erro);
