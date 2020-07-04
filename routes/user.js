@@ -5,7 +5,10 @@ const bcrypt     = require('bcryptjs');
 const passport   = require('passport');
 
 // HELPERS
-const {yes_user}= require('../helpers/yes_user');
+// VOCÊ É UM USUÁRIO?
+const {yes_user}  = require('../helpers/yes_user');
+// VOCÊ É UM ADMINISTRADOR?
+const {yes_admin} = require('../helpers/yes_admin');
 
 // MODELS
 require('../models/Usuario');
@@ -47,7 +50,8 @@ router.post('/registro/novo', (req, res) => {
         Usuario.findOne({ nome: req.body.nome }).then((usuarios) => {
             const novo_usuario = new Usuario({
                 nome:  req.body.nome,
-                senha: req.body.senha
+                senha: req.body.senha,
+                yes_admin: 1
             })
             bcrypt.genSalt(10, (erro, salt) => {
                 bcrypt.hash(novo_usuario.senha, salt, (erro, hash) => {
@@ -119,7 +123,7 @@ router.get("/receitas/unica/:titulo", yes_user, (req, res) => {
     })
 })
 //ROTA DE LISTAR RECEITAS
-router.get('/receitas/lista', yes_user, (req, res) => {
+router.get('/receitas/lista', yes_user, yes_admin, (req, res) => {
     Receita.find().sort({ date: 'desc' }).lean().then((receitas) => {
         res.render("usuario/lista_receitas", { receitas: receitas });
     }).catch((erro) => {
@@ -139,11 +143,11 @@ router.get('/receitas/outras', yes_user, (req, res) => {
     })
 })
 //ROTA PARA CARREGAR O FORMULARIO RECEITA
-router.get('/receitas/add', yes_user, (req, res) => {
+router.get('/receitas/add', yes_user,  yes_admin, (req, res) => {
     res.render('usuario/adiciona_receitas');
 })
 //ROTA DE ADICIONAR RECEITA
-router.post('/receitas/nova', yes_user, (req, res) => {
+router.post('/receitas/nova', yes_user,  yes_admin, (req, res) => {
     // VALIDAÇÕES
     var erros = [];
     var variavel = 0;
@@ -200,7 +204,7 @@ router.post('/receitas/nova', yes_user, (req, res) => {
     }
 })
 //ROTA P/ CARREGAR O FORMULARIO DE EDIÇÃO DE RECEITA
-router.get("/receitas/editar/:id", yes_user, (req, res) => {
+router.get("/receitas/editar/:id", yes_user, yes_admin, (req, res) => {
     Receita.findOne({ _id: req.params.id }).lean().then((receita) => {
         res.render("usuario/editar_receitas", { receita: receita })
     }).catch((erro) => {
@@ -209,7 +213,7 @@ router.get("/receitas/editar/:id", yes_user, (req, res) => {
     })
 })
 //ROTA DE SALVAR A EDIÇÃO
-router.post("/receitas/editar", yes_user, (req, res) => {
+router.post("/receitas/editar", yes_user, yes_admin, (req, res) => {
     Receita.findOne({ _id: req.body.id }).then((receita) => {
         receita.titulo    = req.body.tituloReceita,
         receita.autor     = req.body.autorReceita,
@@ -237,7 +241,7 @@ router.post("/receitas/editar", yes_user, (req, res) => {
     })
 })
 //ROTA DE DELETAR UMA RECEITA
-router.post("/receitas/deletar", yes_user, (req, res) => {
+router.post("/receitas/deletar", yes_user, yes_admin, (req, res) => {
     Receita.remove({ _id: req.body.id }).then(() => {
         req.flash("success_msg", "Receita deletada com sucesso!")
         res.redirect("/user/receitas/lista")
