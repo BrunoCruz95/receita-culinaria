@@ -50,8 +50,7 @@ router.post('/registro/novo', (req, res) => {
         Usuario.findOne({ nome: req.body.nome }).then((usuarios) => {
             const novo_usuario = new Usuario({
                 nome:  req.body.nome,
-                senha: req.body.senha,
-                yes_admin: 1
+                senha: req.body.senha
             })
             bcrypt.genSalt(10, (erro, salt) => {
                 bcrypt.hash(novo_usuario.senha, salt, (erro, hash) => {
