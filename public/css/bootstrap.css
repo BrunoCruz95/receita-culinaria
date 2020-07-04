@@ -35,9 +35,9 @@ a:hover{
 /*----------------------IDs----------------------*/
 #area-cabecalho{
   background-color: #f73100;
-  padding: 15px;
+  padding: 30px;
   margin-top: 190px;
-  margin-bottom: 130x;
+  margin-bottom: 190x;
   margin-left: 10px;
   margin-right: 10px;
   text-align: center;
@@ -52,8 +52,6 @@ a:hover{
 #area-leia-mais{
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 10px;
-  -webkit-text-stroke-width: 0.2px;
-  -webkit-text-stroke-color: #c52700;
 }
 
 #bem-vindo{
@@ -94,36 +92,21 @@ a:hover{
 #botao-navbar{
   font-size: 10px;
 }
-#botao-apagar{
-  padding: 10px;
-  font-size: 70px;
-}
-#area-botao-apagar{
-  background: red;
-  padding: 20px;
-  margin: 10px;
-  text-align: center;
-  font-size: 50px;
-  margin-left: 50px;
-  width: 340px;
-  margin-top: 40px;
-  font-family: Comic Sans MS, Comic Sans, cursive;
-}
 #area-receitas{
   border: 5px ridge #623b2a;
   background: #9b734d;
-  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 10px;
   font-size: 10px;
 }
 #area-botao-editar{
   background: #0067a7;
-  padding: 6px;
   text-align: center;
-  font-size: 10px;
-  margin-left: 10px;
-  width: 60px;
-  height: 30px;
+  font-size: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100px;
   margin-top: 10px;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
@@ -139,12 +122,12 @@ a:hover{
 }
 #area-botao-adicionar{
   background: #21c700;
-  padding: 7px;
-  margin: 10px;
-  font-size: 10px;
   margin-left: 20px;
-  width: 80px;
-  height: 30px;
+  font-size: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100px;
+  text-align: center;
   margin-top: 10px;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
@@ -163,8 +146,6 @@ a:hover{
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 15px;
   margin-top: 15px;
-  -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: #c52700;
 }
 /*FORMATAR O LINK QUE ESTÀ DENTRO DO CABEÇALHO*/
 /**********************************************/
@@ -314,10 +295,6 @@ a:hover{
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 15px;
 }
-.del-msg{
-  padding: 10px;
-  margin-top: 5px;
-}
 .footer {
   position:absolute;
   bottom:0;
@@ -339,7 +316,8 @@ a:hover{
 .area-passo{
   border: 5px ridge #623b2a;
   background: #9b734d;
-  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 10px;
 }
 .form-group-input {
@@ -348,7 +326,8 @@ a:hover{
 .area-material{
   border: 5px ridge #623b2a;
   background: #9b734d;
-  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 10px;
   
 }
@@ -363,24 +342,22 @@ a:hover{
   font-size: 15px;
 }
 .mensagens{
-  margin: 25px;
+  margin-left: 25px;
+  margin-right: 25px;
   margin-top: 10px;
-  margin-bottom: 5px;
   font-family: Brush Script MT, Brush Script Std, cursive;
   font-size: 20px;
 }
 .deletar{
   background-color: red;
-  margin: 10px;
+  margin-left: 10px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: center;
   font-size: 10px;
   color: white;
-  margin-left: 10px;
-  width: 25px;
+  width: 20px;
   float: right;
-  height: 25px;
-  margin-top: 15px;
+  height: 20px;
 }
 
 /*--------------FIM DOS ARQUIVOS ADICIONAIS--------------*/

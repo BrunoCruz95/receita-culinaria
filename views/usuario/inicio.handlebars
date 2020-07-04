@@ -10,7 +10,7 @@
         <div id="bem-vindo-assunto">Este é um simples site de receitas onde você pode aprender e ajudar outras pessoas a
             fazerem
             aquele famoso prato especial.</div>
-        <strong>&nbsp;Receitas recentes:</strong>
+        <strong>Receitas recentes:</strong>
         <div id="area-receitas">
             {{#each receitas}}
             <input type="hidden" name="id" value="{{receita._id}}">
@@ -21,6 +21,7 @@
             <div id="area-leia-mais">
                 <a href="/user/receitas/unica/{{titulo}}">Leia mais</a>
             </div>
+            <hr>
             {{else}}
             <div>Nenhuma receita</div>
             {{/each}}

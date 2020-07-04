@@ -32,12 +32,15 @@ router.post('/registro/novo', (req, res) => {
         req.body.nome == null) {
         cont++;
     }
+    if (req.body.nome.length < 2) {
+        cont++;
+    }
     if (!req.body.senha ||
         typeof req.body.senha == undefined ||
         req.body.senha == null) {
         cont++;
     }
-    if (req.body.senha < 4) {
+    if (req.body.senha.length < 4) {
         cont++;
     }
     if (req.body.senha != req.body.senha2) {

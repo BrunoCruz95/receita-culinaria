@@ -21,11 +21,10 @@
             <form action="/user/receitas/deletar" method="POST">
                 <input type="hidden" name="id" value="{{_id}}">
 
-                <div id='botao-apagar'>
-                    <button type="submit" class="deletar">
-                        <strong>X</strong>
-                    </button>
-                </div>
+                <button type="submit" class="deletar">
+                    <strong>X</strong>
+                </button>
+
             </form>
             <div class="titulo">{{titulo}}</div>
             <div class="tamanho-texto">Descrição</div>
@@ -75,6 +74,7 @@
                     Editar
                 </a>
             </div>
+            <br>
             <span>{{autor}}&nbsp;~</span>
             <span>{{formatDate date}}</span>
         </div>
