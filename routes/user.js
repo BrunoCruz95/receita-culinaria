@@ -84,6 +84,7 @@ router.post('/login', (req, res, next) => {
         failureRedirect: '/user/login',
         failureFlash: true
     })(req, res, next)
+    req.flash("success_msg", "Bem-Vindo ", req.body.nome);
 })
 //ROTA DE ERRO
 router.get('/404', (req, res) => {
