@@ -5,32 +5,25 @@
 
 <div id="area-informacao">
     <div class="fundo-secundario">
-        <div id="bem-vindo"> <strong>Olá, bem-vindo ao Receitas Tudo</strong></div>
-        <hr>
-        <div id="bem-vindo-assunto">Este é um simples site de receitas onde você pode aprender e ajudar outras pessoas a
-            fazerem
-            aquele famoso prato especial.</div>
-        <strong>Receitas recentes:</strong>
-        <div id="area-receitas">
-            {{#each receitas}}
-            <input type="hidden" name="id" value="{{receita._id}}">
-            <div>{{titulo}}</div>
-            <div>{{autor}}</div>
-            <div>{{formatDate date}}</div>
-
-            <div id="area-leia-mais">
-                <a href="/user/receitas/unica/{{titulo}}">Leia mais</a>
-            </div>
-            <hr>
-            {{else}}
-            <div>Nenhuma receita</div>
-            {{/each}}
-        </div>
-        <div id="area-inicio">
-            <div>Siga-nos nas redes sociais:</div>
+        <div>
             <strong>
-                {{>_social}}
+                Olá, bem-vindo ao Receitas Tudo
             </strong>
         </div>
+        <hr>
+
+        <div>
+            Este é um simples site de receitas onde
+            você pode aprender e ajudar outras pessoas
+            a fazerem aquele famoso prato especial.
+        </div>
+
+        <div>
+            <strong>
+                Siga-nos nas redes sociais:
+            </strong>
+            {{>_social}}
+        </div>
+
     </div>
 </div>
