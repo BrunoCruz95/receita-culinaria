@@ -349,7 +349,6 @@ a:hover{
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 10px;
-  
 }
 .titulo{
   text-align: center;
@@ -374,8 +373,21 @@ a:hover{
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   text-align: center;
   font-size: 10px;
+  margin-top: 10px;
   color: white;
-  width: 20px;
+  width: 50px;
+  float: right;
+  height: 20px;
+}
+.baixar{
+  background-color: rgb(100, 201, 0);
+  margin-left: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  font-size: 10px;
+  color: white;
+  width: 50px;
+  margin-top: 10px;
   float: right;
   height: 20px;
 }
