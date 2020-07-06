@@ -3,7 +3,7 @@ module.exports = {
         if(req.isAuthenticated()){
             return next();
         }
-        req.flash("error_msg", "Erro! tente fazer login novamente");
+        req.flash("error_msg", "Erro! tente novamente");
         res.redirect('/');
     }
 }

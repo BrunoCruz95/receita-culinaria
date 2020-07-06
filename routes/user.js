@@ -1,32 +1,35 @@
-const express    = require('express');
-const router     = express.Router();
-const mongoose   = require('mongoose');
-const bcrypt     = require('bcryptjs');
-const passport   = require('passport');
-const multer     = require("multer");
-const path       = require('path');
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
+const multer = require("multer");
+const path = require('path');
 
-const storage    = multer.diskStorage({
-    destination: function(req, file, cb){
+const puppeteer = require('puppeteer');
+const fs = require('fs-extra');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
         cb(null, "uploads/");
     },
-    filename: function(req, file, cb){
+    filename: function (req, file, cb) {
         cb(null, "IMG" + Date.now() + path.extname(file.originalname));
     }
 });
-const upload     = multer({storage});
+const upload = multer({ storage });
 
 // HELPERS
 // VOCÊ É UM USUÁRIO?
-const {yes_user}  = require('../helpers/yes_user');
+const { yes_user } = require('../helpers/yes_user');
 // VOCÊ É UM ADMINISTRADOR?
-const {yes_admin} = require('../helpers/yes_admin');
+const { yes_admin } = require('../helpers/yes_admin');
 
 // MODELS
 require('../models/Usuario');
-const Usuario    = mongoose.model('usuarios');
+const Usuario = mongoose.model('usuarios');
 require("../models/Receita");
-const Receita    = mongoose.model("receitas");
+const Receita = mongoose.model("receitas");
 
 //--------------------------USUARIOS--------------------------
 
@@ -64,7 +67,7 @@ router.post('/registro/novo', (req, res) => {
     } else {
         Usuario.findOne({ nome: req.body.nome }).then((usuarios) => {
             const novo_usuario = new Usuario({
-                nome:  req.body.nome,
+                nome: req.body.nome,
                 senha: req.body.senha
             })
             bcrypt.genSalt(10, (erro, salt) => {
@@ -154,11 +157,11 @@ router.get('/receitas/outras', yes_user, (req, res) => {
     })
 })
 //ROTA PARA CARREGAR O FORMULARIO RECEITA
-router.get('/receitas/add', yes_user,  yes_admin, (req, res) => {
+router.get('/receitas/add', yes_user, yes_admin, (req, res) => {
     res.render('usuario/adiciona_receitas');
 })
 //ROTA DE ADICIONAR RECEITA
-router.post('/receitas/nova', upload.single("file"), yes_user,  yes_admin, (req, res) => {
+router.post('/receitas/nova', upload.single("file"), yes_user, yes_admin, (req, res) => {
     // VALIDAÇÕES
     var erros = [];
     var variavel = 0;
@@ -192,19 +195,19 @@ router.post('/receitas/nova', upload.single("file"), yes_user,  yes_admin, (req,
         res.render('usuario/adiciona_receitas', { erros: erros });
     } else {
         const nova_receita = {
-            titulo:    req.body.tituloReceita,
-            autor:     req.body.autorReceita,
-            assunto:   req.body.assuntoReceita,
+            titulo: req.body.tituloReceita,
+            autor: req.body.autorReceita,
+            assunto: req.body.assuntoReceita,
             material1: req.body.material1Receita,
             material2: req.body.material2Receita,
             material3: req.body.material3Receita,
             material4: req.body.material4Receita,
             material5: req.body.material5Receita,
-            passo1:    req.body.passo1Receita,
-            passo2:    req.body.passo2Receita,
-            passo3:    req.body.passo3Receita,
-            passo4:    req.body.passo4Receita,
-            passo5:    req.body.passo5Receita
+            passo1: req.body.passo1Receita,
+            passo2: req.body.passo2Receita,
+            passo3: req.body.passo3Receita,
+            passo4: req.body.passo4Receita,
+            passo5: req.body.passo5Receita
         }
         new Receita(nova_receita).save().then(() => {
             req.flash("success_msg", "Receita adicionado com sucesso");
@@ -227,19 +230,19 @@ router.get("/receitas/editar/:id", yes_user, yes_admin, (req, res) => {
 //ROTA DE SALVAR A EDIÇÃO
 router.post("/receitas/editar", yes_user, yes_admin, (req, res) => {
     Receita.findOne({ _id: req.body.id }).then((receita) => {
-        receita.titulo    = req.body.tituloReceita,
-        receita.autor     = req.body.autorReceita,
-        receita.assunto   = req.body.assuntoReceita,
-        receita.material1 = req.body.material1Receita,
-        receita.material2 = req.body.material2Receita,
-        receita.material3 = req.body.material3Receita,
-        receita.material4 = req.body.material4Receita,
-        receita.material5 = req.body.material5Receita,
-        receita.passo1    = req.body.passo1Receita,
-        receita.passo2    = req.body.passo2Receita,
-        receita.passo3    = req.body.passo3Receita,
-        receita.passo4    = req.body.passo4Receita,
-        receita.passo5    = req.body.passo5Receita
+        receita.titulo = req.body.tituloReceita,
+            receita.autor = req.body.autorReceita,
+            receita.assunto = req.body.assuntoReceita,
+            receita.material1 = req.body.material1Receita,
+            receita.material2 = req.body.material2Receita,
+            receita.material3 = req.body.material3Receita,
+            receita.material4 = req.body.material4Receita,
+            receita.material5 = req.body.material5Receita,
+            receita.passo1 = req.body.passo1Receita,
+            receita.passo2 = req.body.passo2Receita,
+            receita.passo3 = req.body.passo3Receita,
+            receita.passo4 = req.body.passo4Receita,
+            receita.passo5 = req.body.passo5Receita
         receita.save().then(() => {
             req.flash("success_msg", "Receita editada com sucesso!")
             res.redirect("/user/receitas/lista")
@@ -262,15 +265,52 @@ router.post("/receitas/deletar", yes_user, yes_admin, (req, res) => {
         res.redirect("/user/receitas/lista")
     })
 })
-//ROTA DE DELETAR UM USUÁRIO
-router.post("/usuarios/deletar", yes_user, yes_admin, (req, res) => {
-    Usuario.remove({ _id: req.body.id }).then(() => {
-        req.flash("success_msg", "Usuário deletado com sucesso!")
-        res.redirect("/user/usuarios/lista")
+//ROTA DE BAIXAR UMA RECEITA
+router.post("/receitas/deletar", yes_user, yes_admin, (req, res) => {
+    Receita.remove({ _id: req.body.id }).then(() => {
+        req.flash("success_msg", "Receita deletada com sucesso!")
+        res.redirect("/user/receitas/lista")
     }).catch((erro) => {
-        req.flash("error_msg", "Houve um erro ao deletar usuário")
-        res.redirect("/user/usuarios/lista")
+        req.flash("error_msg", "Houve um erro ao deletar receita")
+        res.redirect("/user/receitas/lista")
     })
 })
+//ROTA DE BAIXAR ARQUIVO
+router.post("/baixar", yes_user, (req, res) => {
+    
+    (async function () {
+        try {
+            const browser = await puppeteer.launch();
+            const page = await browser.newPage();
+
+            await page.setContent(`
+            <center>
+            <br><br><br><br><br>
+            <h1>Todas as receitas você encontra aqui</h1>
+            <p> Este é um simples site de receitas onde
+            você pode aprender e ajudar outras pessoas
+            a fazerem aquele famoso prato especial.</p>
+            <h2>Por Bruno Cruz</h2>
+            </center>
+            `);
+            await page.pdf({
+                
+                path: 'download'+ Date.now()+".pdf",
+                format: 'A4',
+                printBackground: true
+            });
+
+            console.log('pdf realizado com sucesso');
+            res.redirect("/user/inicio");
+        } catch (err) {
+            console.log("Error: " + err);
+        }
+    })();
+})
+//ROTA DE CONFIGURAÇÃO
+router.get('/usuarios/configura', yes_user, (req, res) => {
+    res.render("usuario/configura");
+})
+
 
 module.exports = router;

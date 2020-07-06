@@ -6,17 +6,22 @@
 <div id="area-informacao">
     <div class="fundo-secundario">
         <div>
+            <center>
             <strong>
                 Olá, bem-vindo ao Receitas Tudo
+                <br>
+                Para saber mais é fazer o download do arquivo
             </strong>
+            <form action="/user/baixar" method="POST">
+                <input type="hidden" name="id" value="{{_id}}">
+                
+                <button type="submit" class="baixar">
+                    <strong>Download</strong>
+                </button>
+            </form>
+            </center>
         </div>
         <hr>
-
-        <div>
-            Este é um simples site de receitas onde
-            você pode aprender e ajudar outras pessoas
-            a fazerem aquele famoso prato especial.
-        </div>
 
         <div>
             <strong>
