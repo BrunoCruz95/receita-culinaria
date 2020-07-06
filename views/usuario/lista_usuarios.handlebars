@@ -9,14 +9,14 @@
         {{#each usuarios}}
         <div class="fundo-secundario">
 
+            <div id="area-dados">
             <form action="/user/usuarios/deletar" method="POST">
                 <input type="hidden" name="id" value="{{_id}}">
                 <button type="submit" class="deletar">
                     <strong>Deletar</strong>
                 </button>
-            <div id="area-dados">
                 <strong>
-                    <span>{{nome}}&nbsp;~</span>
+                    <span>{{nome}}</span>
                 </strong>
             </div>
             
