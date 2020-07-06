@@ -262,6 +262,15 @@ router.post("/receitas/deletar", yes_user, yes_admin, (req, res) => {
         res.redirect("/user/receitas/lista")
     })
 })
-
+//ROTA DE DELETAR UM USUÁRIO
+router.post("/usuarios/deletar", yes_user, yes_admin, (req, res) => {
+    Usuario.remove({ _id: req.body.id }).then(() => {
+        req.flash("success_msg", "Usuário deletado com sucesso!")
+        res.redirect("/user/usuarios/lista")
+    }).catch((erro) => {
+        req.flash("error_msg", "Houve um erro ao deletar usuário")
+        res.redirect("/user/usuarios/lista")
+    })
+})
 
 module.exports = router;

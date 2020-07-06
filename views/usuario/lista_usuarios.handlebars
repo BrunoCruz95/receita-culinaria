@@ -8,12 +8,21 @@
     <div>
         {{#each usuarios}}
         <div class="fundo-secundario">
-            <div class="titulo">{{nome}}</div>
+
+            <form action="/user/usuarios/deletar" method="POST">
+                <input type="hidden" name="id" value="{{_id}}">
+                <button type="submit" class="deletar">
+                    <strong>Deletar</strong>
+                </button>
             <div id="area-dados">
                 <strong>
-                    <span class="branco">{{formatDate date}}</span>
+                    <span>{{nome}}&nbsp;~</span>
+                    <span>{{formatDate date}}</span>
                 </strong>
             </div>
+            
+            </form>
+                
         </div>
         {{/each}}
     </div>
