@@ -4,25 +4,17 @@
 
 {{>_msg}}
 
-<div id="area-informacao">
-    <div>
-        {{#each usuarios}}
-        <div class="fundo-secundario">
-
-            <div id="area-dados">
-            <form action="/user/usuarios/deletar" method="POST">
-                <input type="hidden" name="id" value="{{_id}}">
-                <button type="submit" class="deletar">
-                    <strong>Deletar</strong>
-                </button>
-                <strong>
-                    <span>{{nome}}</span>
-                </strong>
-            </div>
-            
-            </form>
-                
-        </div>
-        {{/each}}
+<div id="area-info">
+    {{#each usuarios}}
+    <div class="fundo-secu">
+        <form action="/user/usuarios/deletar" method="POST">
+            <input type="hidden" name="id" value="{{_id}}">
+            <button type="submit" class="deletar">
+                <strong>Deletar</strong>
+            </button>
+        <span class="titulo">{{nome}}</span>
     </div>
+
+    </form>
+    {{/each}}
 </div>
